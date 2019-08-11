@@ -16,12 +16,12 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    composer install
     npm install
     npm run build
   displayName: 'npm install and build'
 
 - task: Npm@1
   inputs:
-    command: 'publish'
-    publishRegistry: 'useFeed'
-    publishFeed: 'e952638d-1b9b-430f-bb89-539674fd4078'
+    command: 'install'
+    workingDir: 'package'
