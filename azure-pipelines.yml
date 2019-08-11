@@ -20,15 +20,8 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@2
+- task: Npm@1
   inputs:
-    rootFolderOrFile: '$(System.warFile)'
-    includeRootFolder: false
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Evaluación gratuita (4895c432-aadc-4697-8e26-fe99bcea889b)'
-    appType: 'webApp'
-    WebAppName: 'desarrolloBanco'
-    packageForLinux: '$(System.warFile)/**/*.zip'
+    command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: 'e952638d-1b9b-430f-bb89-539674fd4078'
